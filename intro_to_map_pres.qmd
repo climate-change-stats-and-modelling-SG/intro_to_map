@@ -184,15 +184,37 @@ We want to return the emoticon for each of the feelings in this tibble.
 df <- 
   tibble(
     feeling = c("sad", "compunctious", "happy")
-  )
+  ) 
 
 ```
 
-. . .
+. . . 
+
+```{r, eval=FALSE}
+
+df <- 
+  tibble(
+    feeling = c("sad", "compunctious", "happy")
+  ) %>% 
+  mutate(emoji = emoticons_1(feeling))
+
+#> Error in `mutate()`:
+#> ℹ In argument: `emoji = emoticons_1(feeling)`.
+#> Caused by error in `if (x == "happy") ...`:
+#> ! the condition has length > 1
+
+```
+
+# Why map? Part 2
 
 So map over the vector
 
 ```{r}
+
+df <- 
+  tibble(
+    feeling = c("sad", "compunctious", "happy")
+  ) 
 
 feeling <- df$feeling
 
